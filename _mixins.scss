@@ -1,0 +1,43 @@
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flexbox-container() {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    @include flexbox();
+}
+
+@mixin flex-flow($direction, $wrap: wrap) {
+    -webkit-flex-flow: $direction $wrap;
+    flex-flow: $direction $wrap;
+}
+
+@mixin size($width, $picWidth: 960, $picHeight: 522) {
+    width: $width;
+    height: $width / $picWidth * $picHeight;
+}
+
+@mixin link-style($color, $radius: 1.5em, $padding: 1em, $decoration: none) {
+    text-decoration: $decoration;
+    color: $color;
+    padding: $padding;
+    border-radius: $radius;
+}
+
+//not used yet
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -webkit-flex:  $values;
+    -ms-flex:  $values;
+    flex:  $values;
+}
+
+
+  

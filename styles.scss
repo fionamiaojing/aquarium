@@ -1,46 +1,50 @@
 @import '_mixins';
+@import '_variables';
 
-header {
-    height: 500px;
-    background-image: url('./img/hero1.jpg');
+body {
+    margin: 0;
 }
-
-nav {
-    padding: 20px 10px;
-    img {
-        float: left;
-        height: 80px;
-    }
+header {
+    min-height: 500px;
+    background-image: url('./img/hero1.jpg');
+    padding: 20px 20px;
 }
 
 .navigation {
-    margin: 0;
-    list-style: none;
     display: inline-block;
 
-    @include flexbox();
+    @include flexbox-container();
     @include flex-flow(row);
     justify-content: flex-end;
+    align-items: center;
+    li:first-child {
+        margin-right: auto;
+    }
 
     a {
-        text-decoration: none;
+        @include link-style(white);
         display: block;
-        padding: 1em;
-        color: white;
-        border-radius: 20px;
 
         &:hover {
             background-color: #F7941D;
         }
     }
 
-    @media all and (max-width: 800px) {
+    @media screen and (max-width: 850px) {
         justify-content: space-around;
+        li:first-child {
+            width: 100%;
+        }
     }
 
-    @media all and (max-width: 600px) {
+
+    @media screen and (max-width: 600px) {
         @include flex-flow(column);
         padding: 0;
+
+        li {
+            width: 100%;
+        }
         
         a { 
           text-align: center; 
@@ -51,26 +55,67 @@ nav {
     }
 }
 
-.flex-container {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.overlook {
+    width: 50%;
+    margin: auto;
+    color: white;
 
-    @include flexbox();
+    @media screen and (max-width: 800px) {
+        width: 80%;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: 95%;
+    }
+}
+
+.welcome {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #E2E2E2;
+
+    &-content-show,
+    &-content-hide {
+        width: 60%;
+        margin: auto;
+    }
+
+    &-content-hide {
+        display: none;
+    }
+
+    a {
+        @include link-style($light-red);
+        font-size: 16px;
+
+        &:hover {
+            color: white;
+            background-color: $light-red;
+        }
+    }
+
+    
+}
+
+.flex-container {
+    @include flexbox-container();
     @include flex-flow(row);
     justify-content: center;
 }
 
 .flex-item {
-    @media screen and (min-width: 500px) {
-        @include img-size(50%);
-    }
+    @include size(50vw);
     @media screen and (max-width: 500px) {
-        @include img-size(100%);
+        @include size(100vw);
     }
-
-    & img {
+    & img,
+    & div {
         height: 100%;
         width: 100%;
+    }
+
+    & div {
+        background-color: thistle;
+        padding: 10px;
     }
 }
