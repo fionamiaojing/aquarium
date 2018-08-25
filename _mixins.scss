@@ -23,10 +23,10 @@
     height: $width / $picWidth * $picHeight;
 }
 
-@mixin link-style($color, $radius: 1.5em, $padding: 1em, $decoration: none) {
+@mixin link-style($color, $radius: 1.5em, $padding-horizontal: 0.5em, $padding-vertical: 1em,$decoration: none) {
     text-decoration: $decoration;
     color: $color;
-    padding: $padding;
+    padding: $padding-horizontal $padding-vertical;
     border-radius: $radius;
 }
 
