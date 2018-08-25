@@ -6,8 +6,8 @@
     display: flex;
 }
 
-@mixin flexbox-container() {
-    padding: 0;
+@mixin flexbox-container($padding: 0) {
+    padding: $padding;
     margin: 0;
     list-style: none;
     @include flexbox();
@@ -18,26 +18,34 @@
     flex-flow: $direction $wrap;
 }
 
-@mixin size($width, $picWidth: 960, $picHeight: 522) {
+@mixin img-size($width, $picWidth: 960, $picHeight: 522) {
     width: $width;
+    //height: auto;
     height: $width / $picWidth * $picHeight;
 }
 
-@mixin link-style($color, $radius: 1.5em, $padding-horizontal: 0.5em, $padding-vertical: 1em,$decoration: none) {
-    text-decoration: $decoration;
-    color: $color;
-    padding: $padding-horizontal $padding-vertical;
-    border-radius: $radius;
+@mixin strech-list() {
+    width: 100%;
+    img {
+        display: block;
+        margin: 10px auto;
+    }
 }
 
-//not used yet
-@mixin flex($values) {
-    -webkit-box-flex: $values;
-    -moz-box-flex:  $values;
-    -webkit-flex:  $values;
-    -ms-flex:  $values;
-    flex:  $values;
+@mixin link-style($color, $display: inline-block) {
+    text-decoration: none;
+    display: $display;
+    color: $color;
+    padding: 0.5em 1.5em;
+    border-radius: 1.5em;
 }
+
+@mixin link-hover($background, $color: white) {
+    color: $color;
+    background-color: $background;
+}
+
+
 
 
   

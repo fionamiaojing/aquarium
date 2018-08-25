@@ -1,17 +1,21 @@
 @import '_mixins';
 @import '_variables';
 
+
+
 body {
     margin: 0;
 }
 
 header {
     position: relative;
-    #logo {
+    #header-background {
         display: block;
-        @include size(100vw, 1920, 900);
+        //use big picture for normal size, put them in a mixin
+        @include img-size(100%, 1920, 900);
         @media screen and (max-width: 600px) {
-            @include size(100vw, 110, 100);
+            //use small pictures for small size
+            @include img-size(100%, 100, 200);
         }
     }
 }
@@ -26,38 +30,37 @@ nav {
 
 .navigation {
     display: inline-block;
-    @include flexbox-container();
+    @include flexbox-container(10px);
     @include flex-flow(row);
-    padding: 10px;
+
     justify-content: flex-end;
     align-items: center;
+
     li:first-child {
         margin-right: auto;
     }
 
     a {
-        @include link-style(white);
-        display: block;
+        @include link-style(white, block);
 
         &:hover {
-            background-color: #F7941D;
+            @include link-hover(#F7941D);
         }
     }
 
     @media screen and (max-width: 850px) {
         justify-content: space-around;
         li:first-child {
-            width: 100%;
+            @include strech-list();
         }
     }
-
 
     @media screen and (max-width: 600px) {
         @include flex-flow(column);
         padding: 0;
 
         li {
-            width: 100%;
+            @include strech-list();
         }
         
         a { 
@@ -110,11 +113,9 @@ nav {
 
     a {
         @include link-style($light-red);
-        font-size: 16px;
 
         &:hover {
-            color: white;
-            background-color: $light-red;
+            @include link-hover($light-red)
         }
     }
 
@@ -139,10 +140,10 @@ nav {
         align-items: center;
         justify-content: center;
 
-        @include size(50vw);
+        @include img-size(50vw);
         @media screen and (max-width: 600px) {
             //should change a little bit aspect ratio
-            @include size(100vw);
+            @include img-size(100vw);
         }
 
         div {
@@ -152,6 +153,8 @@ nav {
     }
 
     .paragraph {
+        width: 80;
+        overflow: scroll;
         @media screen and (max-width: 600px) {
             height: auto;
         }
@@ -160,13 +163,12 @@ nav {
     a {
         @include link-style($light-red);
         border: 1px solid $light-red;
-        display: inline-block;
 
         &:hover {
-            color: white;
-            background-color: $light-red;
+            @include link-hover($light-red);
         }
 
     }
     
 }
+

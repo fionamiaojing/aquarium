@@ -3,14 +3,14 @@ body {
 
 header {
   position: relative; }
-  header #logo {
+  header #header-background {
     display: block;
-    width: 100vw;
-    height: 46.875vw; }
+    width: 100%;
+    height: 46.875%; }
     @media screen and (max-width: 600px) {
-      header #logo {
-        width: 100vw;
-        height: 90.9090909091vw; } }
+      header #header-background {
+        width: 100%;
+        height: 200%; } }
 
 nav {
   position: absolute;
@@ -21,7 +21,7 @@ nav {
 
 .navigation {
   display: inline-block;
-  padding: 0;
+  padding: 10px;
   margin: 0;
   list-style: none;
   display: -webkit-box;
@@ -31,24 +31,27 @@ nav {
   display: flex;
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
-  padding: 10px;
   justify-content: flex-end;
   align-items: center; }
   .navigation li:first-child {
     margin-right: auto; }
   .navigation a {
     text-decoration: none;
+    display: block;
     color: white;
-    padding: 0.5em 1em;
-    border-radius: 1.5em;
-    display: block; }
+    padding: 0.5em 1.5em;
+    border-radius: 1.5em; }
     .navigation a:hover {
+      color: white;
       background-color: #F7941D; }
   @media screen and (max-width: 850px) {
     .navigation {
       justify-content: space-around; }
       .navigation li:first-child {
-        width: 100%; } }
+        width: 100%; }
+        .navigation li:first-child img {
+          display: block;
+          margin: 10px auto; } }
   @media screen and (max-width: 600px) {
     .navigation {
       -webkit-flex-flow: column wrap;
@@ -56,6 +59,9 @@ nav {
       padding: 0; }
       .navigation li {
         width: 100%; }
+        .navigation li img {
+          display: block;
+          margin: 10px auto; }
       .navigation a {
         text-align: center;
         padding: 10px;
@@ -94,10 +100,10 @@ nav {
         width: 80%; } }
   .welcome a {
     text-decoration: none;
+    display: inline-block;
     color: #FF3D00;
-    padding: 0.5em 1em;
-    border-radius: 1.5em;
-    font-size: 16px; }
+    padding: 0.5em 1.5em;
+    border-radius: 1.5em; }
     .welcome a:hover {
       color: white;
       background-color: #FF3D00; }
@@ -135,16 +141,19 @@ nav {
     .content img div,
     .content .paragraph div {
       width: 80%; }
-  @media screen and (max-width: 600px) {
-    .content .paragraph {
-      height: auto; } }
+  .content .paragraph {
+    width: 80;
+    overflow: scroll; }
+    @media screen and (max-width: 600px) {
+      .content .paragraph {
+        height: auto; } }
   .content a {
     text-decoration: none;
+    display: inline-block;
     color: #FF3D00;
-    padding: 0.5em 1em;
+    padding: 0.5em 1.5em;
     border-radius: 1.5em;
-    border: 1px solid #FF3D00;
-    display: inline-block; }
+    border: 1px solid #FF3D00; }
     .content a:hover {
       color: white;
       background-color: #FF3D00; }
