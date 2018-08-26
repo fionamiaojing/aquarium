@@ -1,3 +1,4 @@
+@charset 'utf-8';
 @import '_mixins';
 @import '_variables';
 
@@ -17,6 +18,7 @@
 
 body {
     margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 header {
@@ -26,52 +28,57 @@ header {
         min-height: 360px;
         @include img-size(100vw, 1920, 900);
         @media screen and (max-width: 600px) {
-            content: url("./img/hero1_small.png");
+            content: url('./img/hero1_small.png');
             @include img-size(100vw, 100, 90);
         }
     }
 }
 
-//navigation section
+// navigation section
 nav {
     @extend %absolute-position;
     z-index: 1;
 }
 
-//navigation bar - should change style based on screen width
+// navigation bar - should change style based on screen width
 .navigation {
     display: inline-block;
     @include flexbox-container(10px);
     @include flex-flow(row);
 
-    //nav-bar align to right
+    // nav-bar align to right
     justify-content: flex-end;
     align-items: center;
 
-    //logo should align to the left;
+    // logo should align to the left;
     li:first-child {
         margin-right: auto;
     }
 
-    //nav-link style
+    .logo {
+        max-width: 100%; 
+        height: auto;    
+    }
+
+    // nav-link style
     a {
         @include link-style(white, block);
 
         &:hover {
-            @include link-hover(#F7941D);
+            @include link-hover(rgb(247,148,29));
         }
     }
 
-    @media screen and (max-width: 900px) {
-        //nav-links and logo occupy a new row respectively
+    @include media-screen($max-width) {
+        // nav-links and logo occupy a new row respectively
         justify-content: space-around;
         li:first-child {
             @include strech-list();
         }
     }
 
-    @media screen and (max-width: 600px) {
-        //each nav-links occupy a new row
+    @include media-screen(600px) {
+        // each nav-links occupy a new row
         @include flex-flow(column);
         padding: 0;
 
@@ -89,7 +96,7 @@ nav {
 }
 
 .highlights {
-    //overlay on the (background) image when screen is wide enough
+    // overlay on the (background) image when screen is wide enough
     @extend %absolute-position;
     @extend %flex-layout;
     height: 100%;
@@ -101,7 +108,7 @@ nav {
 
     @include media-screen($max-width) {
         position: static;
-        background-color: #93abbc;
+        background-color: rgb(147, 171, 188);
         
         div {
             width: 80%;
@@ -112,9 +119,9 @@ nav {
 .welcome {
     width: 100%;
     padding: 10px 0;
-    background-color: #E2E2E2;
+    background-color: rgb(226,226,226);
 
-    //content centered in the middle
+    // content centered in the middle
     div {
         width: 60%;
         margin: auto;
@@ -124,7 +131,7 @@ nav {
         }
     }
 
-    //link styles
+    // link styles
     a {
         @include link-style($light-red);
 
@@ -134,12 +141,12 @@ nav {
     } 
 }
 
-//use flexbox to display all contents
+// use flexbox to display all contents
 .content {
     @include flexbox-container();
     @include flex-flow(row);
 
-    //reverse the even-th row;
+    // reverse the even-th row;
     &-reverse {
         @include flex-flow(row-reverse);
         @include media-screen($max-content-width) {
@@ -148,7 +155,7 @@ nav {
     }
 
     /* place img by the side of paras when screen is wide enough,
-    place one by one when screen is small */
+       place one by one when screen is small */
     img,
     .paragraph {
         @include img-size(50vw);
@@ -157,7 +164,7 @@ nav {
         }
     }
 
-    //make paragraph section a flexbox
+    // make paragraph section a flexbox
     .paragraph {
         @extend %flex-layout;
         overflow: scroll;
@@ -166,16 +173,20 @@ nav {
             width: 80%;
         }
 
-        //change align to flex-start when screen width reduced
+        // change align to flex-start when screen width reduced
         @include media-screen($max-width) {
             align-items: flex-start;
         }
 
-        //change height to auto when all the contents are displayed in its own row
+        // change height to auto when all the contents are displayed in its own row
         @include media-screen($max-content-width) {
             height: auto;
             @include flex-align(center);
             min-height: 300px;
+        }
+
+        p {
+            font-size: 12px;
         }
     }
 

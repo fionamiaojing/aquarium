@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 @mixin flexbox() {
     display: -webkit-box;
     display: -moz-box;
@@ -25,8 +27,7 @@
 
 @mixin img-size($width, $picWidth: 960, $picHeight: 522) {
     width: $width;
-    //height: auto;
-    height: $width / $picWidth * $picHeight;
+    height: ($width / $picWidth * $picHeight);
 }
 
 @mixin strech-list() {

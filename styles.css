@@ -12,7 +12,8 @@ nav, .highlights {
   justify-content: center; }
 
 body {
-  margin: 0; }
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; }
 
 header {
   position: relative; }
@@ -46,6 +47,9 @@ nav {
   align-items: center; }
   .navigation li:first-child {
     margin-right: auto; }
+  .navigation .logo {
+    max-width: 100%;
+    height: auto; }
   .navigation a {
     text-decoration: none;
     display: block;
@@ -54,7 +58,7 @@ nav {
     border-radius: 1.5em; }
     .navigation a:hover {
       color: white;
-      background-color: #F7941D; }
+      background-color: #f7941d; }
   @media screen and (max-width: 900px) {
     .navigation {
       justify-content: space-around; }
@@ -94,7 +98,7 @@ nav {
 .welcome {
   width: 100%;
   padding: 10px 0;
-  background-color: #E2E2E2; }
+  background-color: #e2e2e2; }
   .welcome div {
     width: 60%;
     margin: auto; }
@@ -104,12 +108,12 @@ nav {
   .welcome a {
     text-decoration: none;
     display: inline-block;
-    color: #FF3D00;
+    color: #ff3d00;
     padding: 0.5em 1.5em;
     border-radius: 1.5em; }
     .welcome a:hover {
       color: white;
-      background-color: #FF3D00; }
+      background-color: #ff3d00; }
 
 .content {
   padding: 0;
@@ -123,7 +127,7 @@ nav {
   -webkit-flex-flow: row wrap;
   flex-flow: row wrap;
   /* place img by the side of paras when screen is wide enough,
-  place one by one when screen is small */ }
+     place one by one when screen is small */ }
   .content-reverse {
     -webkit-flex-flow: row-reverse wrap;
     flex-flow: row-reverse wrap; }
@@ -153,16 +157,18 @@ nav {
         -webkit-align-items: center;
         align-items: center;
         min-height: 300px; } }
+    .content .paragraph p {
+      font-size: 12px; }
   .content a {
     text-decoration: none;
     display: inline-block;
-    color: #FF3D00;
+    color: #ff3d00;
     padding: 0.5em 1.5em;
     border-radius: 1.5em;
-    border: 1px solid #FF3D00;
+    border: 1px solid #ff3d00;
     margin-bottom: 10px; }
     .content a:hover {
       color: white;
-      background-color: #FF3D00; }
+      background-color: #ff3d00; }
 
 /*# sourceMappingURL=styles.css.map */
