@@ -1,7 +1,19 @@
 @import '_mixins';
 @import '_variables';
 
+%absolute-position {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; 
+}
 
+%flex-layout {
+    display: -webkit-flex;
+    display: flex;
+    @include flex-align(center);
+    justify-content: center; 
+}
 
 body {
     margin: 0;
@@ -11,35 +23,37 @@ header {
     position: relative;
     #header-background {
         display: block;
-        //use big picture for normal size, put them in a mixin
-        @include img-size(100%, 1920, 900);
+        min-height: 360px;
+        @include img-size(100vw, 1920, 900);
         @media screen and (max-width: 600px) {
-            //use small pictures for small size
-            @include img-size(100%, 100, 200);
+            content: url("./img/hero1_small.png");
+            @include img-size(100vw, 100, 90);
         }
     }
 }
 
+//navigation section
 nav {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+    @extend %absolute-position;
     z-index: 1;
 }
 
+//navigation bar - should change style based on screen width
 .navigation {
     display: inline-block;
     @include flexbox-container(10px);
     @include flex-flow(row);
 
+    //nav-bar align to right
     justify-content: flex-end;
     align-items: center;
 
+    //logo should align to the left;
     li:first-child {
         margin-right: auto;
     }
 
+    //nav-link style
     a {
         @include link-style(white, block);
 
@@ -48,7 +62,8 @@ nav {
         }
     }
 
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 900px) {
+        //nav-links and logo occupy a new row respectively
         justify-content: space-around;
         li:first-child {
             @include strech-list();
@@ -56,6 +71,7 @@ nav {
     }
 
     @media screen and (max-width: 600px) {
+        //each nav-links occupy a new row
         @include flex-flow(column);
         padding: 0;
 
@@ -73,101 +89,104 @@ nav {
 }
 
 .highlights {
-    position: absolute;
-    width: 100%;
+    //overlay on the (background) image when screen is wide enough
+    @extend %absolute-position;
+    @extend %flex-layout;
     height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     div {
         width: 60%;
         color: white;
     }
 
-    @media screen and (max-width: 850px) {
+    @include media-screen($max-width) {
         position: static;
-        background-color: #E2E2E2;
+        background-color: #93abbc;
         
         div {
             width: 80%;
-            color: black;
         }
     }
 }
 
 .welcome {
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: #E2E2E2;
 
+    //content centered in the middle
     div {
         width: 60%;
         margin: auto;
-        @media screen and (max-width: 850px) {  
+
+        @include media-screen($max-width) {
             width: 80%
         }
     }
 
+    //link styles
     a {
         @include link-style($light-red);
 
         &:hover {
             @include link-hover($light-red)
         }
-    }
-
-   
-    
+    } 
 }
 
+//use flexbox to display all contents
 .content {
     @include flexbox-container();
     @include flex-flow(row);
 
+    //reverse the even-th row;
     &-reverse {
         @include flex-flow(row-reverse);
-        @media screen and (max-width: 600px) {
+        @include media-screen($max-content-width) {
             @include flex-flow(row);
         }
     }
 
+    /* place img by the side of paras when screen is wide enough,
+    place one by one when screen is small */
     img,
     .paragraph {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
         @include img-size(50vw);
-        @media screen and (max-width: 600px) {
-            //should change a little bit aspect ratio
+        @include media-screen($max-content-width) {
             @include img-size(100vw);
-        }
-
-        div {
-            width: 80%;
-            
         }
     }
 
+    //make paragraph section a flexbox
     .paragraph {
-        width: 80;
+        @extend %flex-layout;
         overflow: scroll;
-        @media screen and (max-width: 600px) {
+        
+        div {
+            width: 80%;
+        }
+
+        //change align to flex-start when screen width reduced
+        @include media-screen($max-width) {
+            align-items: flex-start;
+        }
+
+        //change height to auto when all the contents are displayed in its own row
+        @include media-screen($max-content-width) {
             height: auto;
+            @include flex-align(center);
+            min-height: 300px;
         }
     }
 
     a {
         @include link-style($light-red);
         border: 1px solid $light-red;
+        margin-bottom: 10px;
 
         &:hover {
             @include link-hover($light-red);
         }
-
     }
     
 }

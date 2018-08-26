@@ -6,6 +6,11 @@
     display: flex;
 }
 
+@mixin flex-align($align) {
+    -webkit-align-items: $align;
+    align-items: $align;
+}
+
 @mixin flexbox-container($padding: 0) {
     padding: $padding;
     margin: 0;
@@ -45,6 +50,11 @@
     background-color: $background;
 }
 
+@mixin media-screen($width) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
 
 
 

@@ -1,3 +1,16 @@
+nav, .highlights {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%; }
+
+.highlights, .content .paragraph {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center; }
+
 body {
   margin: 0; }
 
@@ -5,18 +18,16 @@ header {
   position: relative; }
   header #header-background {
     display: block;
-    width: 100%;
-    height: 46.875%; }
+    min-height: 360px;
+    width: 100vw;
+    height: 46.875vw; }
     @media screen and (max-width: 600px) {
       header #header-background {
-        width: 100%;
-        height: 200%; } }
+        content: url("./img/hero1_small.png");
+        width: 100vw;
+        height: 90vw; } }
 
 nav {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
   z-index: 1; }
 
 .navigation {
@@ -44,7 +55,7 @@ nav {
     .navigation a:hover {
       color: white;
       background-color: #F7941D; }
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 900px) {
     .navigation {
       justify-content: space-around; }
       .navigation li:first-child {
@@ -69,33 +80,25 @@ nav {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1); } }
 
 .highlights {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
+  height: 100%; }
   .highlights div {
     width: 60%;
     color: white; }
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 900px) {
     .highlights {
       position: static;
-      background-color: #E2E2E2; }
+      background-color: #93abbc; }
       .highlights div {
-        width: 80%;
-        color: black; } }
+        width: 80%; } }
 
 .welcome {
   width: 100%;
-  padding: 20px 0;
+  padding: 10px 0;
   background-color: #E2E2E2; }
   .welcome div {
     width: 60%;
     margin: auto; }
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 900px) {
       .welcome div {
         width: 80%; } }
   .welcome a {
@@ -118,42 +121,46 @@ nav {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-flow: row wrap;
-  flex-flow: row wrap; }
+  flex-flow: row wrap;
+  /* place img by the side of paras when screen is wide enough,
+  place one by one when screen is small */ }
   .content-reverse {
     -webkit-flex-flow: row-reverse wrap;
     flex-flow: row-reverse wrap; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 650px) {
       .content-reverse {
         -webkit-flex-flow: row wrap;
         flex-flow: row wrap; } }
   .content img,
   .content .paragraph {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 50vw;
     height: 27.1875vw; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 650px) {
       .content img,
       .content .paragraph {
         width: 100vw;
         height: 54.375vw; } }
-    .content img div,
+  .content .paragraph {
+    overflow: scroll; }
     .content .paragraph div {
       width: 80%; }
-  .content .paragraph {
-    width: 80;
-    overflow: scroll; }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
       .content .paragraph {
-        height: auto; } }
+        align-items: flex-start; } }
+    @media screen and (max-width: 650px) {
+      .content .paragraph {
+        height: auto;
+        -webkit-align-items: center;
+        align-items: center;
+        min-height: 300px; } }
   .content a {
     text-decoration: none;
     display: inline-block;
     color: #FF3D00;
     padding: 0.5em 1.5em;
     border-radius: 1.5em;
-    border: 1px solid #FF3D00; }
+    border: 1px solid #FF3D00;
+    margin-bottom: 10px; }
     .content a:hover {
       color: white;
       background-color: #FF3D00; }
